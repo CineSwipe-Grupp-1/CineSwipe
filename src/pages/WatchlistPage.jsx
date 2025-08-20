@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/WatchlistPage.css";
-import { mockData } from "../components/App"; // ✅ correct path
+import { mockData } from "../components/App"; 
 
 export function WatchlistPage() {
   // Take only the first 4 movies
