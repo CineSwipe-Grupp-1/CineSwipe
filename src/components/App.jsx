@@ -71,6 +71,9 @@ const mockData = [
     vote_count: 2303,
   },
 ];
+
+export { mockData }; // <-- Export the mockData so WatchlistPage can use it
+
 export function App() {
   return <Navbar />;
 }
