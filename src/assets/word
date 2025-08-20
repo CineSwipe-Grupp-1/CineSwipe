@@ -1,0 +1,109 @@
+Must Have
+US-01 (Must)
+Som användare vill jag se “Trending” filmer/serier när jag öppnar appen så att jag snabbt kan börja swipa.
+Acceptanskriterier
+
+När appen öppnas visas en lista/kortstack från TMDB Trending (dag/vecka).
+
+Varje kort visar affisch, titel, år, typ (film/serie) och betyg (TMDB).
+
+Tomt/fel: visa vänligt felmeddelande och “försök igen”.
+
+US-04 (Must)
+Som användare vill jag swipa höger för att gilla och vänster för att hoppa över så att jag snabbt kan välja.
+Acceptanskriterier
+
+Swipe-gest eller knappar (:thumbsup:/:thumbsdown:) fungerar likvärdigt.
+
+Gilla sparas lokalt (LocalStorage/IndexedDB) och markeras på kortet.
+
+Nya kort laddas sömlöst.
+
+US-06 (Must)
+Som användare vill jag öppna en detaljsida för ett kort så att jag kan läsa mer innan beslut.
+Acceptanskriterier
+
+Detaljsida visar synopsis, genrer, längd/säsonger, TMDB-betyg, poster + backdrop.
+
+Länkar till trailer (YouTube om tillgängligt).
+
+“Gilla”/“Ta bort gilla” även härifrån.
+
+US-11 (Must)
+Som användare vill jag se min personliga watchlist så att jag kan spara och komma tillbaka.
+Acceptanskriterier
+
+Lokal watchlist listar alla jag gillat (oavsett session).
+
+Kan ta bort från listan.
+
+Består över sidladdningar (persistens).
+
+US-16 (Must)
+Som användare på mobil och läsplatta vill jag att UI:t är responsivt så att det känns naturligt på min enhet.
+Acceptanskriterier
+
+Breakpoints för mobil (sm), läsplatta (md).
+
+Touch-vänliga mål (≥44px).
+
+Horisontell swipe fungerar smidigt.
+
+US-19 (Must)
+Som användare vill jag få tydliga felmeddelanden vid API-fel så att jag förstår vad som händer.
+Acceptanskriterier
+
+Visar human-readable fel + “försök igen”.
+
+Backoff/Retry på nätverksfel.
+
+Loggning i konsol under dev.
+
+Could have:
+US-07 (Should)
+Som värd vill jag skapa en sessionskod så att kompisar kan gå med.
+Acceptanskriterier
+
+“Skapa session” genererar kort kod eller delbar länk.
+
+Koden/länken kan kopieras.
+
+Sessionen visar antal deltagare online.
+
+US-10 (Should)
+Som värd vill jag se en översikt över alla gillningar i sessionen så att vi kan jämföra preferenser.
+Acceptanskriterier
+
+Lista/tab med titel + antal gillningar per deltagare.
+
+Sorterbar på flest gillningar.
+
+US-12 (Should)
+Som grupp vill vi se den gemensamma watchlisten från sessionen så att alla ser våra matcher.
+Acceptanskriterier
+
+“Session Watchlist” visar endast matcher.
+
+Synkas i realtid mellan deltagarna.
+
+Exportera/Share som länk.
+
+US-02 (Should)
+Som användare vill jag söka efter titel så att jag hittar något specifikt.
+Acceptanskriterier
+
+Sökfält med debounced query (t.ex. 400 ms).
+
+Resultat visar blandade typer (film/serie) och är paginerade.
+
+Ingen träff → visa “Inga resultat” + tips.
+
+US-03 (Should)
+Som användare vill jag filtrera på genre och typ (film/serie) så att jag får relevanta träffar.
+Acceptanskriterier
+
+Genre-filter hämtas från TMDB och kan multiväljas.
+
+Typfilter: Film / Serie / Båda.
+
+Valda filter påverkar både Trending och Sök.
