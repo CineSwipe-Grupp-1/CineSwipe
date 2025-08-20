@@ -3,11 +3,11 @@ US-01 (Must)
 Som användare vill jag se “Trending” filmer/serier när jag öppnar appen så att jag snabbt kan börja swipa.
 Acceptanskriterier
 
-När appen öppnas visas en lista/kortstack från TMDB Trending (dag/vecka).
+När appen öppnas visas ett kort från TMDB Trending.
 
 Varje kort visar affisch, titel, år, typ (film/serie) och betyg (TMDB).
 
-Tomt/fel: visa vänligt felmeddelande och “försök igen”.
+Tomt/fel: visa vänligt felmeddelande och “försök igen” i ett liknande kort.
 
 US-04 (Must)
 Som användare vill jag swipa höger för att gilla och vänster för att hoppa över så att jag snabbt kan välja.
@@ -57,7 +57,6 @@ Visar human-readable fel + “försök igen”.
 
 Backoff/Retry på nätverksfel.
 
-Loggning i konsol under dev.
 
 Could have:
 US-07 (Should)
