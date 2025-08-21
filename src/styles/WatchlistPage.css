@@ -17,14 +17,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    max-width: 1000px;
-    /* limit desktop width */
-    margin: 0 auto;
-   
+    max-width: 1000px; /* limit desktop width */
+    margin: 0 auto; /* center container */
 }
 
 /* Movie card styling */
-.movie-card {
+.movie-card-list {
     background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
@@ -34,7 +32,7 @@
     transition: transform 0.2s;
 }
 
-.movie-card:hover {
+.movie-card-list:hover {
     transform: scale(1.03);
 }
 
@@ -102,8 +100,7 @@
     .watchlist-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
-        max-width: 800px;
-        /* center 2x2 layout */
+        max-width: 800px; /* center 2x2 layout */
     }
 
     .movie-poster {

@@ -11,7 +11,7 @@ export function WatchlistPage() {
       <h2>My Watchlist</h2>
       <div className="watchlist-container">
         {movies.map((movie) => (
-          <div key={movie.id} className="movie-card">
+          <div key={movie.id} className="movie-card-list">
             <img
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               alt={movie.title}
