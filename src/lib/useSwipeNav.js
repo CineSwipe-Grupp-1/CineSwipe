@@ -1,5 +1,5 @@
 // lib/useSwipeNav.js
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function useSwipeNav(items, { wrap = true, startIndex = 0 } = {}) {
   const count = items?.length ?? 0;
@@ -7,6 +7,15 @@ export function useSwipeNav(items, { wrap = true, startIndex = 0 } = {}) {
     if (!count) return 0;
     return Math.min(Math.max(startIndex, 0), count - 1);
   });
+
+  // ✅ resetta eller kläm när items ändras
+  useEffect(() => {
+    if (!count) {
+      setIndex(0);
+      return;
+    }
+    setIndex(i => Math.min(i, count - 1));
+  }, [count]);
 
   const current = count ? items[index] : null;
 

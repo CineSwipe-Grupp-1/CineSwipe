@@ -15,8 +15,6 @@ export const MovieCard = ({ movie }) => {
         onDragStart={e => e.preventDefault()}
       />
       <br></br>
-
-      <button onClick={handleLike}>👍 Lägg till</button>
     </div>
   );
 };
