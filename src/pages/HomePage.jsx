@@ -1,50 +1,61 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getTrending } from "../api/tmdb";
 import { mapMovie } from "../lib/tmdbAdapter";
+import { useSwipeNav } from "../lib/useSwipeNav";
+import { SwipeLayer } from "../components/SwipeLayer";
 import { MovieCard } from "../components/MovieCard";
-import { pickOne } from "../lib/shuffle";
 
-export const HomePage = () => {
+export function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState("loading"); // loading | ready | error
+  const [status, setStatus] = useState("loading");
+  async function fetchTrending() {
+    try {
+      setStatus("loading");
+      const data = await getTrending({
+        mediaType: "all",
+        timeWindow: "week",
+        page: 1,
+      });
+      const mapped = (data?.results ?? [])
+        .map(mapMovie)
+        .filter((m) => m.posterUrl);
+      setMovies(mapped);
+      setStatus("ready");
+    } catch (e) {
+      console.error(e);
+      setStatus("error");
+    }
+  }
 
   useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        setStatus("loading");
-        const data = await getTrending({
-          mediaType: "all",
-          timeWindow: "week",
-          page: 1,
-        });
-        const mapped = (data?.results ?? [])
-          .map(mapMovie)
-          .filter((m) => m.posterUrl);
-        if (alive) {
-          setMovies(mapped);
-          setStatus("ready");
-        }
-      } catch (e) {
-        console.error(e);
-        if (alive) setStatus("error");
-      }
-    })();
-    return () => {
-      alive = false;
-    };
+    fetchTrending();
   }, []);
 
-  const current = useMemo(() => pickOne(movies), [movies]);
+  const { current, prev, next } = useSwipeNav(movies, { wrap: true });
 
   if (status === "loading") return <div>Laddar trending…</div>;
   if (status === "error")
     return (
       <div className="error-card">
         <p>Oj! Kunde inte hämta trending just nu.</p>
-        <button onClick={() => location.reload()}>Försök igen</button>
+        <button onClick={fetchTrending}>Försök igen</button>
       </div>
     );
 
-  return <div>{current && <MovieCard movie={current} />}</div>;
-};
+  if (!current) return <p>Inga filmer</p>;
+
+  return (
+    <div className="page-center">
+      <div className="swipe-wrap">
+        <SwipeLayer onSwipeLeft={prev} onSwipeRight={next}>
+          <MovieCard movie={current} />
+        </SwipeLayer>
+
+        <div className="arrow-overlay" aria-hidden>
+          <span className="arrow left">⬅️</span>
+          <span className="arrow right">➡️</span>
+        </div>
+      </div>
+    </div>
+  );
+}
