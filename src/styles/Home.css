@@ -1,0 +1,22 @@
+.swipe-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+.arrow-overlay {
+  pointer-events: none;
+} /* ingen inverkan på swipe */
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  font-size: 24px;
+}
+.arrow.left {
+  left: -40px;
+}
+.arrow.right {
+  right: -40px;
+}

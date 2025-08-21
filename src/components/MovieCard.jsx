@@ -1,4 +1,4 @@
-import { addToWatchlist } from "../lib/storage";
+import { addToWatchlist } from '../lib/storage';
 
 export const MovieCard = ({ movie }) => {
   const handleLike = () => {
@@ -8,7 +8,12 @@ export const MovieCard = ({ movie }) => {
 
   return (
     <div>
-      <img src={movie.posterUrl} alt={movie.title} />
+      <img
+        src={movie.posterUrl}
+        alt={movie.title}
+        draggable={false}
+        onDragStart={e => e.preventDefault()}
+      />
       <br></br>
 
       <button onClick={handleLike}>👍 Lägg till</button>
