@@ -37,7 +37,7 @@ export function WatchlistPage() {
 
       <div className="watchlist-container">
         {movies.map((movie) => (
-          <div key={movie.id} className="movie-card">
+          <div key={movie.id} className="movie-card-list">
             {movie.posterUrl ? (
               <img
                 src={movie.posterUrl}
