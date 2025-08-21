@@ -1,10 +1,12 @@
 .navbar {
-  position: sticky; /* eller fixed om du vill att den alltid syns */
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
+  z-index: 9999;
   background: #fff;
   border-top: 1px solid #ddd;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
 }
 
 .navbar ul {
@@ -17,12 +19,12 @@
 }
 
 .nav-btn {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-decoration: none;
   color: #333;
   padding: 0.4rem 1rem;
-  border-radius: 8px;
-  transition: background 0.2s;
+  border-radius: 10px;
+  transition: background 0.15s;
 }
 
 .nav-btn:hover {
@@ -31,6 +33,6 @@
 
 .nav-btn.active {
   background: #ddd;
-  pointer-events: none; /* gör den oklickbar */
-  font-weight: bold;
+  pointer-events: none;
+  font-weight: 600;
 }

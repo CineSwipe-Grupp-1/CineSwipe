@@ -1,0 +1,49 @@
+.deck {
+  position: relative;
+  /* Mindre bredd än tidigare så det blir luft på sidorna */
+  width: min(84vw, 400px);
+  margin: 0 auto;
+
+  /* Nytt: inre padding = vit kant runt korten */
+  padding: 12px 12px 16px; /* lite extra i botten för info-knapp */
+
+  /* Valfritt: en subtil bakgrund eller låt den vara transparent */
+  background: #fff; /* ta bort om du vill */
+  border-radius: 14px; /* rundning på “scenen” */
+}
+
+/* Reservera höjd (2:3-ratio). Sänk lite så posten inte känns gigantisk */
+.deck::before {
+  content: "";
+  display: block;
+  padding-top: 145%; /* var 150% */
+}
+
+.deck-card {
+  position: absolute;
+  /* Viktigt: inset respekterar deck:ens padding -> ger vit kant runt */
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* Bakomliggande kort ska inte få events */
+.deck-card.behind {
+  pointer-events: none;
+}
+
+.card-shell {
+  width: 100%;
+}
+
+/* Se till att själva postern får rundade hörn + skugga */
+.deck .top img,
+.deck .card-shell img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+}
