@@ -1,0 +1,106 @@
+.movie-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 32, 41, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.movie-modal-content {
+  background: linear-gradient(135deg, #fff 80%, #f3f6fa 100%);
+  padding: 32px 28px 24px 28px;
+  border-radius: 18px;
+  min-width: 320px;
+  max-width: 95vw;
+  width: 380px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(30, 32, 41, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.08);
+  animation: modal-pop 0.25s cubic-bezier(0.4, 2, 0.6, 1) both;
+  font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+
+@keyframes modal-pop {
+  0% {
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.movie-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #f3f6fa;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  color: #444;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(30, 32, 41, 0.08);
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.movie-modal-close:hover {
+  background: #e0e4ea;
+  color: #222;
+}
+
+.movie-modal-poster {
+  width: 140px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgba(30, 32, 41, 0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.movie-modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #23243a;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.movie-modal-content p {
+  margin: 8px 0;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.movie-modal-content strong {
+  color: #23243a;
+  font-weight: 500;
+}
+
+@media (max-width: 500px) {
+  .movie-modal-content {
+    padding: 18px 6vw 16px 6vw;
+    min-width: unset;
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .movie-modal-poster {
+    width: 90px;
+    margin-bottom: 12px;
+  }
+}
