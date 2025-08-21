@@ -1,5 +1,6 @@
 import { mockData } from '../components/App';
 import { mapMovie } from '../lib/tmdbAdapter';
+import { MovieCard } from '../components/MovieCard';
 
 export const HomePage = () => {
   const movies = mockData.map(mapMovie);
@@ -7,13 +8,7 @@ export const HomePage = () => {
   return (
     <div>
       {movies.map(movie => (
-        <div key={movie.id}>
-          <img src={movie.posterUrl} alt={movie.title} />
-          <h3>
-            {movie.title} ({movie.year})
-          </h3>
-          <p>⭐ {movie.rating}</p>
-        </div>
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );
