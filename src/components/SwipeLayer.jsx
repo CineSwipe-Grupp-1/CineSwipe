@@ -1,5 +1,4 @@
-// components/SwipeLayer.jsx
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 
 export function SwipeLayer({
   children,
@@ -28,10 +27,10 @@ export function SwipeLayer({
 
   const style = {
     transform: `translateX(${dx}px)`,
-    transition: startX.current == null ? 'transform 150ms ease' : 'none',
-    touchAction: 'pan-y',
-    userSelect: 'none',
-    willChange: 'transform',
+    transition: startX.current == null ? "transform 150ms ease" : "none",
+    touchAction: "pan-y",
+    userSelect: "none",
+    willChange: "transform",
   };
 
   return (
@@ -41,7 +40,7 @@ export function SwipeLayer({
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      onDragStart={e => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
     >
       {children}
     </div>
