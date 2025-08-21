@@ -1,32 +1,36 @@
+// components/SwipeLayer.jsx
 import { useRef, useState } from 'react';
 
-export function SwipeLayer({ children, onSwipeLeft, onSwipeRight, threshold = 80 }) {
-  const startX = useRef(0);
+export function SwipeLayer({
+  children,
+  onSwipeLeft,
+  onSwipeRight,
+  threshold = 80,
+}) {
+  const startX = useRef(null);
   const [dx, setDx] = useState(0);
 
   function onPointerDown(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
-    startX.current = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+    startX.current = e.clientX;
   }
   function onPointerMove(e) {
-    if (startX.current === 0) return;
-    const x = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-    setDx(x - startX.current);
+    if (startX.current == null) return;
+    setDx(e.clientX - startX.current);
   }
   function onPointerUp() {
     if (Math.abs(dx) > threshold) {
       dx > 0 ? onSwipeRight?.() : onSwipeLeft?.();
     }
-    // reset (snap back)
-    startX.current = 0;
+    startX.current = null;
     setDx(0);
   }
 
-  // enkel visuell feedback när man drar
   const style = {
-    transform: `translateX(${dx}px) rotate(${dx * 0.05}deg)`,
-    transition: startX.current ? 'none' : 'transform 150ms ease',
-    touchAction: 'pan-y', // tillåt vertikal scroll
+    transform: `translateX(${dx}px)`,
+    transition: startX.current == null ? 'transform 150ms ease' : 'none',
+    touchAction: 'pan-y',
+    userSelect: 'none',
     willChange: 'transform',
   };
 
@@ -37,6 +41,7 @@ export function SwipeLayer({ children, onSwipeLeft, onSwipeRight, threshold = 80
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
+      onDragStart={e => e.preventDefault()}
     >
       {children}
     </div>
