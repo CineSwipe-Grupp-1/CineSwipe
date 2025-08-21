@@ -1,4 +1,4 @@
-import { addToWatchlist } from '../lib/storage';
+import { addToWatchlist } from "../lib/storage";
 
 export const MovieCard = ({ movie }) => {
   const handleLike = () => {
@@ -7,14 +7,15 @@ export const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div>
+    <section>
       <img
         src={movie.posterUrl}
         alt={movie.title}
         draggable={false}
-        onDragStart={e => e.preventDefault()}
+        onDragStart={(e) => e.preventDefault()}
       />
+
       <br></br>
-    </div>
+    </section>
   );
 };
