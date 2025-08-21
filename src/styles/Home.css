@@ -4,7 +4,13 @@
   overflow: visible;
 }
 
-/* Lägg pilarna klart över korten (större än deckens ~100) */
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px calc(96px + env(safe-area-inset-bottom));
+}
+
 .arrow-overlay {
   position: absolute;
   inset: 0;
@@ -13,7 +19,7 @@
   justify-content: space-between;
   padding: 0 8px;
   pointer-events: none;
-  z-index: 200; /* ⬅︎ viktigt: över .deck-card */
+  z-index: 1200;
 }
 
 .arrow-overlay .arrow {
@@ -21,7 +27,6 @@
   opacity: 0.8;
 }
 
-/* Placera pilarna innanför postern så de alltid syns */
 .arrow {
   position: absolute;
   top: 50%;
@@ -30,15 +35,8 @@
   font-size: 24px;
 }
 .arrow.left {
-  left: 8px; /* ⬅︎ ändra från -40px till 8px */
+  left: 8px;
 }
 .arrow.right {
-  right: 8px; /* ⬅︎ ändra från -40px till 8px */
-}
-.page-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Luft runt scenen + plats för navbaren */
-  padding: 16px 12px calc(96px + env(safe-area-inset-bottom));
+  right: 8px;
 }
