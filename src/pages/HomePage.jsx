@@ -75,19 +75,7 @@ export function HomePage() {
 
         <button
           onClick={() => openModal(current)}
-          style={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            zIndex: 10,
-            background: "#fff",
-            border: "1px solid #ccc",
-            borderRadius: "50%",
-            width: 40,
-            height: 40,
-            fontSize: 20,
-            cursor: "pointer",
-          }}
+          className="info-btn"
           aria-label="Mer info"
         >
           ℹ️
