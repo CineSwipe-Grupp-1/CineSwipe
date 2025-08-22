@@ -8,6 +8,7 @@ export function App() {
       <main className="page-content">
         <Outlet />
       </main>
+
       <Navbar />
     </div>
   );

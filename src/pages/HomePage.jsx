@@ -6,6 +6,7 @@ import { StackedDeck } from "../components/StackedDeck";
 import { MovieCard } from "../components/MovieCard";
 import { addToWatchlist } from "../lib/storage";
 import MovieModal from "../components/MovieModal";
+import HeartButton from "../components/HeartButton"; // import it here
 
 const SWIPED_KEY = "cinSwipe_swiped_v1";
 function loadSwiped() {
@@ -19,7 +20,7 @@ function loadSwiped() {
 function persistSwiped(set) {
   try {
     sessionStorage.setItem(SWIPED_KEY, JSON.stringify(Array.from(set)));
-  } catch {}
+  } catch { }
 }
 
 export function HomePage() {
@@ -110,8 +111,14 @@ export function HomePage() {
   const openModal = (movie) => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
+  // Function specifically for HeartButton
+  const swipeCurrentCardRight = () => {
+    likeCurrent(); // triggers watchlist addition + removes the card
+    // If StackedDeck supports animation, you can add animation triggers here
+  };
+
   return (
-    <div className="page-center">
+    <div className="page-center" style={{ position: "relative" }}>
       <div className="swipe-wrap">
         <StackedDeck
           items={visible}
@@ -128,6 +135,9 @@ export function HomePage() {
           ℹ️
         </button>
       </div>
+
+      {/* Heart button for current movie */}
+      {current && <HeartButton movie={current} onSwipeRight={swipeCurrentCardRight} />}
 
       {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
     </div>

@@ -7,15 +7,14 @@ export const MovieCard = ({ movie }) => {
   };
 
   return (
-    <section>
+    <section className="movie-card">
       <img
         src={movie.posterUrl}
         alt={movie.title}
         draggable={false}
         onDragStart={(e) => e.preventDefault()}
       />
-
-      <br></br>
+      <br />
     </section>
   );
 };
