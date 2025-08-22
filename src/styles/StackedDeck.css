@@ -28,6 +28,7 @@
 .deck-card.behind {
   pointer-events: none;
 }
+
 .card-shell {
   width: 100%;
 }
@@ -58,6 +59,24 @@
 .deck .arrow.left {
   left: 8px;
 }
+
 .deck .arrow.right {
   right: 8px;
+}
+
+/* Swipe right animation */
+.swipe-right {
+  animation: swipeRightAnim 0.5s forwards;
+}
+
+@keyframes swipeRightAnim {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(300px) rotate(20deg);
+    opacity: 0;
+  }
 }

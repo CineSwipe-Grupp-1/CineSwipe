@@ -6,7 +6,7 @@ import { StackedDeck } from "../components/StackedDeck";
 import { MovieCard } from "../components/MovieCard";
 import { addToWatchlist } from "../lib/storage";
 import MovieModal from "../components/MovieModal";
-import HeartButton from "../components/HeartButton"; // import it here
+import HeartButton from "../components/HeartButton";
 
 const SWIPED_KEY = "cinSwipe_swiped_v1";
 function loadSwiped() {
@@ -74,16 +74,15 @@ export function HomePage() {
     }
   }, [movies.length, status]);
 
-  const { current, index } = useSwipeNav(movies, { wrap: false });
+  // Here we get the swipe helpers from useSwipeNav
+  const { current, index, swipeRight } = useSwipeNav(movies, { wrap: false });
 
   if (status === "loading") return <div>Laddar trending…</div>;
   if (status === "error")
     return (
       <div className="error-card">
         <p>Oj! Kunde inte hämta trending just nu.</p>
-        <button
-          onClick={() => fetchPage((pageRef.current = 1), { isFirst: true })}
-        >
+        <button onClick={() => fetchPage((pageRef.current = 1), { isFirst: true })}>
           Försök igen
         </button>
       </div>
@@ -104,17 +103,22 @@ export function HomePage() {
     dropCurrent();
   };
 
-  const dismissCurrent = () => {
-    dropCurrent();
-  };
+  const dismissCurrent = () => dropCurrent();
 
   const openModal = (movie) => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
-  // Function specifically for HeartButton
-  const swipeCurrentCardRight = () => {
-    likeCurrent(); // triggers watchlist addition + removes the card
-    // If StackedDeck supports animation, you can add animation triggers here
+  // Heart button triggers swipeRight after adding to watchlist
+  const handleHeartClick = () => {
+    if (!current) return;
+
+    // Add movie to watchlist
+    addToWatchlist(current);
+
+    // Swipe the current card programmatically
+    if (swipeRight) {
+      swipeRight(); // this triggers StackedDeck to remove current card and advance
+    }
   };
 
   return (
@@ -127,17 +131,13 @@ export function HomePage() {
           renderCard={(m) => <MovieCard movie={m} />}
         />
 
-        <button
-          onClick={() => openModal(current)}
-          className="info-btn"
-          aria-label="Mer info"
-        >
+        <button onClick={() => openModal(current)} className="info-btn" aria-label="Mer info">
           ℹ️
         </button>
       </div>
 
-      {/* Heart button for current movie */}
-      {current && <HeartButton movie={current} onSwipeRight={swipeCurrentCardRight} />}
+      {/* Heart button */}
+      {current && <HeartButton movie={current} onSwipeRight={handleHeartClick} />}
 
       {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
     </div>
