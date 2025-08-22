@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/WatchlistPage.css";
 import { getWatchlist, removeFromWatchlist } from "../lib/storage";
+import MovieModal from "../components/MovieModal";
 
 export function WatchlistPage() {
   const [movies, setMovies] = useState([]);
+  const [modalMovie, setModalMovie] = useState(null);
+
+  const openModal = (movie) => setModalMovie(movie);
+  const closeModal = () => setModalMovie(null);
 
   useEffect(() => {
     setMovies(getWatchlist());
@@ -72,11 +77,19 @@ export function WatchlistPage() {
                 >
                   ❌ Ta bort
                 </button>
+                <button
+                  onClick={() => openModal(movie)}
+                  className="info-btn"
+                  aria-label="Mer info"
+                >
+                  ℹ️
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
     </div>
   );
 }
