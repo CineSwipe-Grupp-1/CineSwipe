@@ -1,122 +1,209 @@
+/* General page styling */
 .watchlist-page {
-    padding: 1rem 2rem;
-    background-color: #f5f5f5;
+    padding: 1.5rem 2rem;
+    background: #f0f2f5;
     min-height: 100vh;
-    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .watchlist-page h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 2rem;
-    color: #333;
-    
+    color: #1f2937;
 }
 
-/* Grid container */
+/* Header with count */
+.watchlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+}
+
+.watchlist-count {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* Watchlist grid for desktop/tablet */
 .watchlist-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
-    /* limit desktop width */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 1200px;
     margin: 0 auto;
-   
 }
 
-/* Movie card styling */
-.movie-card {
+/* Movie card */
+.movie-card-list {
     background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
+    flex-direction: row;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 240px;
 }
 
-.movie-card:hover {
-    transform: scale(1.03);
+.movie-card-list:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
+/* Poster image */
 .movie-poster {
-    width: 100%;
+    width: 150px;
+    height: 100%;
     object-fit: cover;
-    height: 300px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 0.9rem;
+    flex-shrink: 0;
 }
 
+/* Movie info */
 .movie-info {
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    flex: 1;
 }
 
 .movie-info h3 {
     margin: 0;
     font-size: 1.2rem;
-    color: #222;
+    color: #111827;
 }
 
-.release-date,
+.release-date {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
 .rating {
-    font-size: 0.9rem;
-    color: #777;
+    align-self: flex-start;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #f59e0b;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-weight: 600;
 }
 
+/* Overview */
 .overview {
-    font-size: 0.95rem;
-    color: #555;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.4em;
+    overflow: visible;
+    max-height: none;
+    position: relative;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    .watchlist-page {
-        padding: 1rem;
-    }
-
-    .watchlist-page h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .movie-poster {
-        height: 200px;
-    }
-
-    .movie-info h3 {
-        font-size: 1rem;
-    }
-
-    .overview {
-        font-size: 0.9rem;
-        -webkit-line-clamp: 3;
+/* Remove gradient overlay on desktop */
+@media (min-width: 769px) {
+    .overview::after {
+        display: none;
     }
 }
 
-/* Desktop 2x2 grid for 4 movies */
-@media (min-width: 900px) {
+/* Actions */
+.actions {
+    margin-top: auto;
+}
+
+.remove-btn {
+    padding: 0.5rem 1rem;
+    background-color: #ef4444;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Placeholder */
+.movie-poster.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d1d5db;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+
+/* Mobile (1 column) */
+@media (max-width: 768px) {
     .watchlist-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        max-width: 800px;
-        /* center 2x2 layout */
+        grid-template-columns: 1fr;
+    }
+
+    .movie-card-list {
+        flex-direction: column;
+        height: auto;
     }
 
     .movie-poster {
-        height: 350px;
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
     }
 
-    .movie-info h3 {
-        font-size: 1.3rem;
+    .movie-info {
+        padding: 0.75rem;
     }
 
     .overview {
-        font-size: 1rem;
-        -webkit-line-clamp: 4;
+        max-height: 5.6em;
+        overflow: hidden;
+    }
+
+    .overview::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1.4em;
+        background: linear-gradient(to top, #f0f2f5, transparent);
+    }
+}
+
+/* Tablet & Desktop (2 columns) */
+@media (min-width: 769px) {
+    .watchlist-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .movie-card-list {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .movie-poster {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+    }
+
+    .movie-info {
+        padding: 1rem;
     }
 }
