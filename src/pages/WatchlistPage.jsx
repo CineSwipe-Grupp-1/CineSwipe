@@ -5,6 +5,10 @@ import { getWatchlist, removeFromWatchlist } from "../lib/storage";
 
 export function WatchlistPage() {
   const [movies, setMovies] = useState([]);
+  const [modalMovie, setModalMovie] = useState(null);
+
+  const openModal = (movie) => setModalMovie(movie);
+  const closeModal = () => setModalMovie(null);
 
   useEffect(() => {
     setMovies(getWatchlist());
@@ -71,6 +75,13 @@ export function WatchlistPage() {
                   aria-label={`Ta bort ${movie.title} från watchlist`}
                 >
                   ❌ Ta bort
+                </button>
+                <button
+                  onClick={() => openModal(movie)}
+                  className="info-btn"
+                  aria-label="Mer info"
+                >
+                  ℹ️
                 </button>
               </div>
             </div>
