@@ -7,6 +7,6 @@ import './index.css';
 createRoot(document.getElementById('root')).render(
   <>
     <RouterProvider router={router} />
-    <Toaster richColors closeButton position='top-right' offset={24} />
+    <Toaster richColors closeButton position='top-right' offset={24}  className="app-toaster"  />
   </>
 );

@@ -1,8 +1,16 @@
 /* toast.css */
 
+.app-toaster,
 .sonner-toaster[data-y-position='top'][data-x-position='right'] {
   inset-inline-end: 24px !important; /* flytta in från höger */
   padding-right: 24px !important;
+}
+
+.app-toaster > *,
+.sonner-toaster > *,
+[data-sonner-toaster] > * {
+  margin-inline-end: 24px !important;
+  margin-right: 24px !important; /* fallback */
 }
 .cine-toast {
   display: flex;
