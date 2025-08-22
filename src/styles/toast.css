@@ -1,0 +1,40 @@
+/* toast.css */
+
+.sonner-toaster[data-y-position='top'][data-x-position='right'] {
+  inset-inline-end: 24px !important; /* flytta in från höger */
+  padding-right: 24px !important;
+}
+.cine-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(22, 22, 22, 0.72);
+  color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+}
+
+.cine-toast img {
+  width: 40px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cine-toast .title {
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cine-toast .subtitle {
+  opacity: 0.9;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
