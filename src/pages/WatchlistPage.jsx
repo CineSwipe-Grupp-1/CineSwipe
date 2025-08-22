@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/WatchlistPage.css";
 import { getWatchlist, removeFromWatchlist } from "../lib/storage";
+import MovieModal from "../components/MovieModal";
 
 export function WatchlistPage() {
   const [movies, setMovies] = useState([]);
@@ -88,6 +89,7 @@ export function WatchlistPage() {
           </div>
         ))}
       </div>
+      {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
     </div>
   );
 }
