@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { getTrending } from '../api/tmdb';
-import { mapMovie } from '../lib/tmdbAdapter';
-import { useSwipeNav } from '../lib/useSwipeNav';
-import { StackedDeck } from '../components/StackedDeck';
-import { MovieCard } from '../components/MovieCard';
-import { addToWatchlist } from '../lib/storage';
-import MovieModal from '../components/MovieModal';
-import { NotifyAdded } from '../components/Toaster';
+import { useEffect, useRef, useState } from "react";
+import { getTrending } from "../api/tmdb";
+import { mapMovie } from "../lib/tmdbAdapter";
+import { useSwipeNav } from "../lib/useSwipeNav";
+import { StackedDeck } from "../components/StackedDeck";
+import { MovieCard } from "../components/MovieCard";
+import { addToWatchlist } from "../lib/storage";
+import MovieModal from "../components/MovieModal";
+import { NotifyAdded } from "../components/Toaster";
 
-const SWIPED_KEY = 'cinSwipe_swiped_v1';
+const SWIPED_KEY = "cinSwipe_swiped_v1";
 function loadSwiped() {
   try {
     const raw = sessionStorage.getItem(SWIPED_KEY);
@@ -25,7 +25,7 @@ function persistSwiped(set) {
 
 export function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState('loading');
+  const [status, setStatus] = useState("loading");
   const [modalMovie, setModalMovie] = useState(null);
 
   const seenIds = useRef(new Set());
@@ -37,26 +37,26 @@ export function HomePage() {
     if (loadingMore.current) return;
     loadingMore.current = true;
     try {
-      if (isFirst) setStatus('loading');
+      if (isFirst) setStatus("loading");
       const data = await getTrending({
-        mediaType: 'all',
-        timeWindow: 'week',
+        mediaType: "all",
+        timeWindow: "week",
         page,
       });
       const mapped = (data?.results ?? [])
         .map(mapMovie)
-        .filter(m => m.posterUrl);
+        .filter((m) => m.posterUrl);
 
       const unique = mapped.filter(
-        m => !swipedIds.current.has(m.id) && !seenIds.current.has(m.id)
+        (m) => !swipedIds.current.has(m.id) && !seenIds.current.has(m.id)
       );
-      unique.forEach(m => seenIds.current.add(m.id));
+      unique.forEach((m) => seenIds.current.add(m.id));
 
-      setMovies(prev => [...prev, ...unique]);
-      if (isFirst) setStatus('ready');
+      setMovies((prev) => [...prev, ...unique]);
+      if (isFirst) setStatus("ready");
     } catch (e) {
       console.error(e);
-      if (isFirst) setStatus('error');
+      if (isFirst) setStatus("error");
     } finally {
       loadingMore.current = false;
     }
@@ -67,7 +67,7 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (status !== 'ready') return;
+    if (status !== "ready") return;
     if (movies.length <= 5) {
       pageRef.current += 1;
       fetchPage(pageRef.current);
@@ -76,10 +76,10 @@ export function HomePage() {
 
   const { current, index } = useSwipeNav(movies, { wrap: false });
 
-  if (status === 'loading') return <div>Laddar trending…</div>;
-  if (status === 'error')
+  if (status === "loading") return <div>Laddar trending…</div>;
+  if (status === "error")
     return (
-      <div className='error-card'>
+      <div className="error-card">
         <p>Oj! Kunde inte hämta trending just nu.</p>
         <button
           onClick={() => fetchPage((pageRef.current = 1), { isFirst: true })}
@@ -96,7 +96,7 @@ export function HomePage() {
   const dropCurrent = () => {
     swipedIds.current.add(current.id);
     persistSwiped(swipedIds.current);
-    setMovies(prev => prev.filter(m => m.id !== current.id));
+    setMovies((prev) => prev.filter((m) => m.id !== current.id));
   };
 
   const likeCurrent = () => {
@@ -110,23 +110,23 @@ export function HomePage() {
     dropCurrent();
   };
 
-  const openModal = movie => setModalMovie(movie);
+  const openModal = (movie) => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
   return (
-    <div className='page-center'>
-      <div className='swipe-wrap'>
+    <div className="page-center">
+      <div className="swipe-wrap">
         <StackedDeck
           items={visible}
           onSwipeLeft={dismissCurrent}
           onSwipeRight={likeCurrent}
-          renderCard={m => <MovieCard movie={m} />}
+          renderCard={(m) => <MovieCard movie={m} />}
         />
 
         <button
           onClick={() => openModal(current)}
-          className='info-btn'
-          aria-label='Mer info'
+          className="info-btn"
+          aria-label="Mer info"
         >
           ℹ️
         </button>
