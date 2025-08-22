@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/WatchlistPage.css";
-import { getWatchlist, removeFromWatchlist } from "../lib/storage";
+import {
+  clearWatchlist,
+  getWatchlist,
+  removeFromWatchlist,
+} from "../lib/storage";
 
 export function WatchlistPage() {
   const [movies, setMovies] = useState([]);
@@ -13,6 +17,11 @@ export function WatchlistPage() {
   const handleRemove = (id) => {
     removeFromWatchlist(id);
     setMovies(getWatchlist());
+  };
+
+  const handleClear = () => {
+    clearWatchlist();
+    setMovies([]);
   };
 
   if (!movies || movies.length === 0) {
@@ -32,7 +41,12 @@ export function WatchlistPage() {
     <div className="watchlist-page">
       <div className="watchlist-header">
         <h2>My Watchlist</h2>
-        <span className="watchlist-count">{movies.length} filmer</span>
+        <div className="header-div">
+          <button className="remove-btn" onClick={() => handleClear()}>
+            ❌ Rensa Filmer
+          </button>
+          <span className="watchlist-count">{movies.length} filmer</span>
+        </div>
       </div>
 
       <div className="watchlist-container">
