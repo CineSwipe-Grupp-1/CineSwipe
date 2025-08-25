@@ -1,0 +1,58 @@
+{
+  "results": [
+    {
+      "id": 101,
+      "title": "Mock Movie 1",
+      "name": "Mock Movie 1",
+      "poster_path": "/p1.jpg",
+      "release_date": "2024-01-01",
+      "vote_average": 7.5,
+      "media_type": "movie"
+    },
+    {
+      "id": 102,
+      "title": "Mock Movie 2",
+      "name": "Mock Movie 2",
+      "poster_path": "/p2.jpg",
+      "release_date": "2024-02-01",
+      "vote_average": 8.0,
+      "media_type": "movie"
+    },
+    {
+      "id": 103,
+      "title": "Mock Movie 3",
+      "name": "Mock Movie 3",
+      "poster_path": "/p3.jpg",
+      "release_date": "2024-03-01",
+      "vote_average": 6.9,
+      "media_type": "movie"
+    },
+    {
+      "id": 104,
+      "title": "Mock Movie 4",
+      "name": "Mock Movie 4",
+      "poster_path": "/p4.jpg",
+      "release_date": "2024-04-01",
+      "vote_average": 7.2,
+      "media_type": "movie"
+    },
+    {
+      "id": 105,
+      "title": "Mock Movie 5",
+      "name": "Mock Movie 5",
+      "poster_path": "/p5.jpg",
+      "release_date": "2024-05-01",
+      "vote_average": 7.8,
+      "media_type": "movie"
+    },
+    {
+      "id": 106,
+      "title": "Mock Movie 6",
+      "name": "Mock Movie 6",
+      "poster_path": "/p6.jpg",
+      "release_date": "2024-06-01",
+      "vote_average": 7.1,
+      "media_type": "movie"
+    }
+  ]
+}
