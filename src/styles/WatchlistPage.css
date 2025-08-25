@@ -23,6 +23,12 @@
   padding: 0 1rem;
 }
 
+.header-div {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
 .watchlist-count {
   font-size: 1rem;
   color: #6b7280;
@@ -132,10 +138,13 @@
 
 .actions {
   margin-top: auto;
+<<<<<<< HEAD
+=======
   display: flex;
   gap: 0.5rem;
   flex-wrap: nowrap;
   align-items: center;
+>>>>>>> dc7521a3432428b829d72ce0a941fef67ae0acf9
 }
 
 .remove-btn {

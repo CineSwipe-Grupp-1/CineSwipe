@@ -19,3 +19,7 @@ export function removeFromWatchlist(id) {
   const updated = current.filter((m) => m.id !== id);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 }
+
+export function clearWatchlist() {
+  localStorage.clear(STORAGE_KEY);
+}
