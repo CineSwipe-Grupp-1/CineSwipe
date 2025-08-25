@@ -21,7 +21,7 @@ function loadSwiped() {
 function persistSwiped(set) {
   try {
     sessionStorage.setItem(SWIPED_KEY, JSON.stringify(Array.from(set)));
-  } catch { }
+  } catch {}
 }
 
 export function HomePage() {
@@ -125,7 +125,7 @@ export function HomePage() {
         />
 
         {/* HeartButton always visible for current movie */}
-        <HeartButton onClick={likeCurrent} />
+        <HeartButton onClick={likeCurrent} data-cy="heart-btn" />
 
         <button
           onClick={() => openModal(current)}

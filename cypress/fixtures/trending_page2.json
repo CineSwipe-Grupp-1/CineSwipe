@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "id": 201,
+      "title": "Mock Movie 7",
+      "name": "Mock Movie 7",
+      "poster_path": "/p7.jpg",
+      "release_date": "2024-07-01",
+      "vote_average": 7.0,
+      "media_type": "movie"
+    },
+    {
+      "id": 202,
+      "title": "Mock Movie 8",
+      "name": "Mock Movie 8",
+      "poster_path": "/p8.jpg",
+      "release_date": "2024-08-01",
+      "vote_average": 7.9,
+      "media_type": "movie"
+    }
+  ]
+}
