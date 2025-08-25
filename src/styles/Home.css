@@ -1,9 +1,14 @@
-.swipe-wrap {
-  position: relative;
-  display: inline-block;
-  overflow: visible;
+/* ====== Layout variables (lätt att justera) ====== */
+:root {
+  --deck-width: min(80vw, 360px);
+  --gap: 12px;
+
+  --btn-size: 56px; /* höjd/bredd på kontroller */
+  --btn-radius: 8px;
+  --btn-font: 24px;
 }
 
+/* ====== Sidoram ====== */
 .page-center {
   display: flex;
   align-items: center;
@@ -11,6 +16,15 @@
   padding: 16px 12px calc(96px + env(safe-area-inset-bottom));
 }
 
+.swipe-wrap {
+  position: relative; /* referens för ev. absoluta barn */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+}
+
+/* ====== Piltips över kort ====== */
 .arrow-overlay {
   position: absolute;
   inset: 0;
@@ -18,25 +32,73 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
-  pointer-events: none;
+  pointer-events: none; /* låt korten ta klick */
   z-index: 1200;
 }
 
-.arrow-overlay .arrow {
+.arrow-overlay .arrow,
+.arrow {
   font-size: 2rem;
   opacity: 0.8;
 }
-
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 24px; /* fallback om inte i .arrow-overlay */
   opacity: 0.6;
-  font-size: 24px;
 }
 .arrow.left {
   left: 8px;
 }
 .arrow.right {
   right: 8px;
+}
+
+/* ====== Kontrollrad under kort ====== */
+.controls {
+  /* Låt den ligga i normal flödeslayout under kortet */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* X – Info – Hjärta */
+  gap: 1rem;
+  width: var(--deck-width); /* matcha kortens bredd */
+  padding: 0 1rem;
+  /* Inga pointer-events-hack behövs när den inte är overlay */
+}
+
+/* ====== Gemensam knappstil för X / Info / Heart ====== */
+.controls button {
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: var(--btn-radius);
+  border: 1px solid #cfd3d8;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--btn-font); /* styr ikon/emoji-storlek */
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, filter 0.15s ease-in-out;
+}
+
+.controls button:hover {
+  transform: scale(1.06);
+  filter: brightness(0.98);
+}
+.controls button:active {
+  transform: scale(0.94);
+}
+.controls button:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.4);
+  outline-offset: 2px;
+}
+
+/* ====== Valfri special för hjärtat (behåll er röda look) ====== */
+.heart-button {
+  border-width: 3px;
+  border-color: rgb(221, 105, 105);
+  background: rgba(249, 247, 247, 0.96);
 }

@@ -8,6 +8,7 @@ import { addToWatchlist } from "../lib/storage";
 import MovieModal from "../components/MovieModal";
 import { NotifyAdded } from "../components/Toaster";
 import { HeartButton } from "../components/HeartButton";
+import { XButton } from "../components/XButton";
 
 const SWIPED_KEY = "cinSwipe_swiped_v1";
 function loadSwiped() {
@@ -124,16 +125,18 @@ export function HomePage() {
           renderCard={(m) => <MovieCard movie={m} />}
         />
 
-        {/* HeartButton always visible for current movie */}
-        <HeartButton onClick={likeCurrent} data-cy="heart-btn" />
-
-        <button
-          onClick={() => openModal(current)}
-          className="info-btn"
-          aria-label="Mer info"
-        >
-          ℹ️
-        </button>
+        {/*Kontrollpanel*/}
+        <div className="controls" role="group" aria-label="Kortkontroller">
+          <XButton onClick={dismissCurrent} data-cy="heart-btn" />
+          <button
+            onClick={() => openModal(current)}
+            className="info-btn"
+            aria-label="Mer info"
+          >
+            ℹ️
+          </button>{" "}
+          <HeartButton onClick={likeCurrent} data-cy="heart-btn" />
+        </div>
       </div>
 
       {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
