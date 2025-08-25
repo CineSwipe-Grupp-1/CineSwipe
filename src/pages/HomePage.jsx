@@ -124,17 +124,19 @@ export function HomePage() {
           onSwipeRight={likeCurrent}
           renderCard={m => <MovieCard movie={m} />}
         />
-        <XButton onClick={dismissCurrent} />
-        {/* HeartButton always visible for current movie */}
-        <HeartButton onClick={likeCurrent} />
 
-        <button
-          onClick={() => openModal(current)}
-          className='info-btn'
-          aria-label='Mer info'
-        >
-          ℹ️
-        </button>
+        {/*Kontrollpanel*/}
+        <div className='controls' role='group' aria-label='Kortkontroller'>
+          <XButton onClick={dismissCurrent} />
+          <button
+            onClick={() => openModal(current)}
+            className='info-btn'
+            aria-label='Mer info'
+          >
+            ℹ️
+          </button>{' '}
+          <HeartButton onClick={likeCurrent} />
+        </div>
       </div>
 
       {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}

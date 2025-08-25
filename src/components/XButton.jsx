@@ -1,5 +1,3 @@
-import '../styles/XButton.css';
-
 export function XButton({ onClick }) {
   return (
     <button
