@@ -7,6 +7,7 @@ import { MovieCard } from "../components/MovieCard";
 import { addToWatchlist } from "../lib/storage";
 import MovieModal from "../components/MovieModal";
 import { NotifyAdded } from "../components/Toaster";
+import { HeartButton } from "../components/HeartButton";
 
 const SWIPED_KEY = "cinSwipe_swiped_v1";
 function loadSwiped() {
@@ -20,7 +21,7 @@ function loadSwiped() {
 function persistSwiped(set) {
   try {
     sessionStorage.setItem(SWIPED_KEY, JSON.stringify(Array.from(set)));
-  } catch {}
+  } catch { }
 }
 
 export function HomePage() {
@@ -122,6 +123,9 @@ export function HomePage() {
           onSwipeRight={likeCurrent}
           renderCard={(m) => <MovieCard movie={m} />}
         />
+
+        {/* HeartButton always visible for current movie */}
+        <HeartButton onClick={likeCurrent} />
 
         <button
           onClick={() => openModal(current)}
