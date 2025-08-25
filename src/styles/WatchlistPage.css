@@ -21,12 +21,15 @@
   max-width: 1200px;
   margin: 0 auto 1.5rem;
   padding: 0 1rem;
+<<<<<<< HEAD
 }
 
 .header-div {
   display: flex;
   align-items: center;
   gap: 4rem;
+=======
+>>>>>>> dc7521a3432428b829d72ce0a941fef67ae0acf9
 }
 
 .watchlist-count {
@@ -123,8 +126,28 @@
 }
 
 /* Actions */
+
+.info-btn {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
 .actions {
   margin-top: auto;
+<<<<<<< HEAD
+=======
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  align-items: center;
+>>>>>>> dc7521a3432428b829d72ce0a941fef67ae0acf9
 }
 
 .remove-btn {
