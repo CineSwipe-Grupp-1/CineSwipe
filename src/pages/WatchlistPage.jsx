@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/WatchlistPage.css";
-import { getWatchlist, removeFromWatchlist } from "../lib/storage";
+import {
+  clearWatchlist,
+  getWatchlist,
+  removeFromWatchlist,
+} from "../lib/storage";
 import MovieModal from "../components/MovieModal";
 
 export function WatchlistPage() {
@@ -20,10 +24,15 @@ export function WatchlistPage() {
     setMovies(getWatchlist());
   };
 
+  const handleClear = () => {
+    clearWatchlist();
+    setMovies([]);
+  };
+
   if (!movies || movies.length === 0) {
     return (
-      <div className="watchlist-page">
-        <h2>My Watchlist</h2>
+      <div className="watchlist-page" data-cy="watchlist-page">
+        <h2 data-cy="watchlist-title">My Watchlist</h2>
         <p>Din lista är tom 👀</p>
         <p>
           Gå till <Link to="/HomePage">Home</Link> och lägg till filmer genom
@@ -37,7 +46,12 @@ export function WatchlistPage() {
     <div className="watchlist-page">
       <div className="watchlist-header">
         <h2>My Watchlist</h2>
-        <span className="watchlist-count">{movies.length} filmer</span>
+        <div className="header-div">
+          <button className="remove-btn" onClick={() => handleClear()}>
+            ❌ Rensa Filmer
+          </button>
+          <span className="watchlist-count">{movies.length} filmer</span>
+        </div>
       </div>
 
       <div className="watchlist-container">
