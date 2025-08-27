@@ -123,7 +123,6 @@
 }
 
 /* Actions */
-
 .info-btn {
   padding: 0.5rem 1rem;
   background-color: #3b82f6;
@@ -173,7 +172,7 @@
 
 /* Responsive adjustments */
 
-/* Mobile (1 column) */
+/* Mobile (1 column, stacked header) */
 @media (max-width: 768px) {
   .watchlist-container {
     grid-template-columns: 1fr;
@@ -207,9 +206,31 @@
     height: 1.4em;
     background: linear-gradient(to top, #f0f2f5, transparent);
   }
+
+  .watchlist-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .header-div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .remove-btn {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+
+  .watchlist-count {
+    font-size: 1rem;
+  }
 }
 
-/* Tablet & Desktop (2 columns) */
+/* Tablet & Desktop (2 columns, row header) */
 @media (min-width: 769px) {
   .watchlist-container {
     grid-template-columns: 1fr 1fr;
