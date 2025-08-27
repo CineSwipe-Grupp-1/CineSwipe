@@ -12,7 +12,7 @@ export const Navbar = () => {
               isActive ? "nav-btn active" : "nav-btn"
             }
           >
-            🏠 Home
+            🏠 Start
           </NavLink>
         </li>
         <li>
@@ -22,7 +22,7 @@ export const Navbar = () => {
               isActive ? "nav-btn active" : "nav-btn"
             }
           >
-            ❤️ Watchlist
+            ❤️ FilmLista
           </NavLink>
         </li>
       </ul>
