@@ -10,6 +10,8 @@
 
 /* ====== Sidoram ====== */
 .page-center {
+  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,6 +66,8 @@
   gap: 1rem;
   width: var(--deck-width); /* matcha kortens bredd */
   padding: 0 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
   /* Inga pointer-events-hack behövs när den inte är overlay */
 }
 

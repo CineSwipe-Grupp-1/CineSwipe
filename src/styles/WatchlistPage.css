@@ -138,13 +138,10 @@
 
 .actions {
   margin-top: auto;
-<<<<<<< HEAD
-=======
   display: flex;
   gap: 0.5rem;
   flex-wrap: nowrap;
   align-items: center;
->>>>>>> dc7521a3432428b829d72ce0a941fef67ae0acf9
 }
 
 .remove-btn {
