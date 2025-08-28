@@ -106,3 +106,25 @@
   border-color: rgb(221, 105, 105);
   background: rgba(249, 247, 247, 0.96);
 }
+
+/* Centrera sidinnehåll (loading/error/ready) */
+.page-center {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center; /* vertikalt */
+  justify-content: center; /* horisontellt */
+  padding: 1rem;
+}
+
+/* (valfritt) gör felkortet lite tydligare */
+.error-card {
+  padding: 1rem 1.25rem;
+  border: 1px solid #f3c2c2;
+  background: #fff4f4;
+  border-radius: 8px;
+  max-width: 520px;
+  width: 100%;
+}
+.error-card button {
+  margin-top: 0.75rem;
+}
