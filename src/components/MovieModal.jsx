@@ -22,18 +22,19 @@ const MovieModal = ({ movie, onClose }) => {
           alt={movie.title}
         />
         <p>
-          <strong>Description:</strong>{" "}
-          {movie.overview || "No description is available."}
+          <strong>Beskrivning:</strong>{" "}
+          {movie.overview || "Ingen beskrivning tillgänglig"}
         </p>
         <p>
-          <strong>Rating:</strong> {movie.rating || "No rating available."}
+          <strong>Betygssättning:</strong>{" "}
+          {movie.rating || "Ingen betygssättning tillgänglig"}
         </p>
         <p>
-          <strong>Year:</strong> {movie.year || "No year available."}
+          <strong>År:</strong> {movie.year || "Inget år tillgängligt"}
         </p>
         <p>
-          <strong>Release Date:</strong>{" "}
-          {movie.releaseDate || "No release date available."}
+          <strong>Släppt Datum:</strong>{" "}
+          {movie.releaseDate || "Inget releasdatum tillgängligt"}
         </p>
       </div>
     </div>

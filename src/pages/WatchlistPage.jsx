@@ -32,7 +32,7 @@ export function WatchlistPage() {
   if (!movies || movies.length === 0) {
     return (
       <div className="watchlist-page" data-cy="watchlist-page">
-        <h2 data-cy="watchlist-title">My Watchlist</h2>
+        <h2 data-cy="watchlist-title">Min Film Lista</h2>
         <p>Din lista är tom 👀</p>
         <p>
           Gå till <Link to="/HomePage">Home</Link> och lägg till filmer genom
@@ -45,7 +45,7 @@ export function WatchlistPage() {
   return (
     <div className="watchlist-page">
       <div className="watchlist-header">
-        <h2>My Watchlist</h2>
+        <h2>Min Film Lista</h2>
         <div className="header-div">
           <button className="remove-btn" onClick={() => handleClear()}>
             ❌ Rensa Filmer
@@ -74,7 +74,7 @@ export function WatchlistPage() {
               </h3>
 
               {movie.releaseDate && (
-                <p className="release-date">Release: {movie.releaseDate}</p>
+                <p className="release-date">Släppt: {movie.releaseDate}</p>
               )}
 
               {movie.overview && <p className="overview">{movie.overview}</p>}
