@@ -9,6 +9,7 @@ import MovieModal from '../components/MovieModal';
 import { NotifyAdded } from '../components/Toaster';
 import { HeartButton } from '../components/HeartButton';
 import { XButton } from '../components/XButton';
+import { StateGate } from '../components/StateGate';
 
 const SWIPED_KEY = 'cinSwipe_swiped_v1';
 function loadSwiped() {
@@ -79,21 +80,6 @@ export function HomePage() {
 
   const { current, index } = useSwipeNav(movies, { wrap: false });
 
-  if (status === 'loading') return <div>Laddar trending…</div>;
-  if (status === 'error')
-    return (
-      <div className='error-card'>
-        <p>Oj! Kunde inte hämta trending just nu.</p>
-        <button
-          onClick={() => fetchPage((pageRef.current = 1), { isFirst: true })}
-        >
-          Försök igen
-        </button>
-      </div>
-    );
-
-  if (!current) return <p>Inga filmer</p>;
-
   const visible = movies.slice(index, index + 3);
 
   const dropCurrent = () => {
@@ -118,29 +104,42 @@ export function HomePage() {
 
   return (
     <div className='page-center'>
-      <div className='swipe-wrap'>
-        <StackedDeck
-          items={visible}
-          onSwipeLeft={dismissCurrent}
-          onSwipeRight={likeCurrent}
-          renderCard={m => <MovieCard movie={m} />}
-        />
+      <StateGate
+        status={status}
+        loading={<p>Laddar trending…</p>}
+        errorMessage='Oj! Kunde inte hämta trending just nu.'
+        onRetry={() => fetchPage((pageRef.current = 1), { isFirst: true })}
+      />
 
-        {/*Kontrollpanel*/}
-        <div className='controls' role='group' aria-label='Kortkontroller'>
-          <XButton onClick={dismissCurrent} data-cy='heart-btn' />
-          <button
-            onClick={() => openModal(current)}
-            className='info-btn'
-            aria-label='Mer info'
-          >
-            ℹ️
-          </button>{' '}
-          <HeartButton onClick={likeCurrent} data-cy='heart-btn' />
-        </div>
-      </div>
+      {!current ? (
+        <p>Inga filmer</p>
+      ) : (
+        <>
+          <div className='swipe-wrap'>
+            <StackedDeck
+              items={visible}
+              onSwipeLeft={dismissCurrent}
+              onSwipeRight={likeCurrent}
+              renderCard={m => <MovieCard movie={m} />}
+            />
 
-      {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
+            {/* Kontrollpanel */}
+            <div className='controls' role='group' aria-label='Kortkontroller'>
+              <XButton onClick={dismissCurrent} data-cy='heart-btn' />
+              <button
+                onClick={() => openModal(current)}
+                className='info-btn'
+                aria-label='Mer info'
+              >
+                ℹ️
+              </button>{' '}
+              <HeartButton onClick={likeCurrent} data-cy='heart-btn' />
+            </div>
+          </div>
+
+          {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
+        </>
+      )}
     </div>
   );
 }

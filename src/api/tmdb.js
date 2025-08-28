@@ -5,7 +5,8 @@ export async function getTrending({
   mediaType = 'all',
   timeWindow = 'week',
 } = {}) {
-  // Endast i development, trigga fel med ?forceError
+  // Endast i development, trigga fel med ?forceError för att testa felhantering i UI:et
+  // I browsern lägg till ?forceError i URL:en (http://localhost:5173/?forceError)
   if (
     import.meta.env.DEV &&
     new URLSearchParams(window.location.search).has('forceError')
