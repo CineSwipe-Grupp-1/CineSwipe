@@ -3,7 +3,7 @@
   padding: 1.5rem 2rem;
   background: #f0f2f5;
   min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .watchlist-page h2 {
@@ -155,6 +155,17 @@
   transition: background-color 0.3s, transform 0.2s;
 }
 
+.info-btn,
+.remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 10px 14px; /* valfritt – men lämna min-måtten ovan */
+  line-height: 1; /* undvik att texten krymper ytan */
+}
+
 .remove-btn:hover {
   background-color: #dc2626;
   transform: scale(1.05);
@@ -199,7 +210,7 @@
   }
 
   .overview::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     width: 100%;
