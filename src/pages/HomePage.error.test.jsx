@@ -1,5 +1,6 @@
 /* @vitest-environment jsdom
-Filen testar HomePage:s errorhantering. 1 - om första fetch misslyckas då ska användaren se error-kort. 
+Filen testar HomePage:s errorhantering på två sätt:
+1 - om första fetch misslyckas då ska användaren se error-kort. 
 2. Om man klickar på försök igen- då ska komponenten försöka igen och visa innehåll när det lyckas.
 Allt "tunt" (API, swipe, modal UI-komponenter) mockas bort för att fokusea på just denna logik
 Kommando olika varianter:

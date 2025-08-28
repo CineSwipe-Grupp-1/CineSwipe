@@ -102,44 +102,43 @@ export function HomePage() {
   const openModal = movie => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
-  return (
-    <div className='page-center'>
-      <StateGate
-        status={status}
-        loading={<p>Laddar trending…</p>}
-        errorMessage='Oj! Kunde inte hämta trending just nu.'
-        onRetry={() => fetchPage((pageRef.current = 1), { isFirst: true })}
-      />
-
+return (
+  <div className="page-center">
+    <StateGate
+      status={status}
+      loading={<p role="status">Laddar trending…</p>}
+      errorMessage="Oj! Kunde inte hämta trending just nu."
+      onRetry={() => fetchPage((pageRef.current = 1), { isFirst: true })}
+    >
       {!current ? (
         <p>Inga filmer</p>
       ) : (
         <>
-          <div className='swipe-wrap'>
+          <div className="swipe-wrap">
             <StackedDeck
               items={visible}
               onSwipeLeft={dismissCurrent}
               onSwipeRight={likeCurrent}
-              renderCard={m => <MovieCard movie={m} />}
+              renderCard={(m) => <MovieCard movie={m} />}
             />
 
             {/* Kontrollpanel */}
-            <div className='controls' role='group' aria-label='Kortkontroller'>
-              <XButton onClick={dismissCurrent} data-cy='heart-btn' />
+            <div className="controls" role="group" aria-label="Kortkontroller">
+              <XButton onClick={dismissCurrent} data-cy="heart-btn" />
               <button
                 onClick={() => openModal(current)}
-                className='info-btn'
-                aria-label='Mer info'
+                className="info-btn"
+                aria-label="Mer info"
               >
                 ℹ️
               </button>{' '}
-              <HeartButton onClick={likeCurrent} data-cy='heart-btn' />
+              <HeartButton onClick={likeCurrent} data-cy="heart-btn" />
             </div>
           </div>
 
           {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
         </>
       )}
-    </div>
-  );
-}
+    </StateGate>
+  </div>
+); }
