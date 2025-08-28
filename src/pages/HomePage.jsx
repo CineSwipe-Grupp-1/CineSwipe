@@ -102,43 +102,74 @@ export function HomePage() {
   const openModal = movie => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
-return (
-  <div className="page-center">
-    <StateGate
-      status={status}
-      loading={<p role="status">Laddar trending…</p>}
-      errorMessage="Oj! Kunde inte hämta trending just nu."
-      onRetry={() => fetchPage((pageRef.current = 1), { isFirst: true })}
-    >
-      {!current ? (
-        <p>Inga filmer</p>
-      ) : (
-        <>
-          <div className="swipe-wrap">
-            <StackedDeck
-              items={visible}
-              onSwipeLeft={dismissCurrent}
-              onSwipeRight={likeCurrent}
-              renderCard={(m) => <MovieCard movie={m} />}
-            />
+  return (
+    <div className='page-center'>
+      {/* HEAD för / */}
+      <title>CineSwipe – Upptäck filmer</title>
+      <meta
+        name='description'
+        content='Svep för att hitta nya filmer att se. Spara favoriter till din watchlist.'
+      />
+      <link rel='canonical' href='http://localhost:5173/' />
+      <meta property='og:url' content='http://localhost:5173/' />
+      <meta property='og:title' content='CineSwipe – Upptäck filmer' />
+      <meta
+        property='og:description'
+        content='Svep för att hitta nya filmer att se. Spara favoriter.'
+      />
 
-            {/* Kontrollpanel */}
-            <div className="controls" role="group" aria-label="Kortkontroller">
-              <XButton onClick={dismissCurrent} data-cy="heart-btn" />
-              <button
-                onClick={() => openModal(current)}
-                className="info-btn"
-                aria-label="Mer info"
+      {/* ✅ H1 behövs för Lighthouse SEO */}
+      <h1>Upptäck filmer</h1>
+
+      <StateGate
+        status={status}
+        loading={<p role='status'>Laddar trending…</p>}
+        errorMessage='Oj! Kunde inte hämta trending just nu.'
+        onRetry={() => fetchPage((pageRef.current = 1), { isFirst: true })}
+      >
+        {!current ? (
+          <p>Inga filmer</p>
+        ) : (
+          <>
+            <div className='swipe-wrap'>
+              <StackedDeck
+                items={visible}
+                onSwipeLeft={dismissCurrent}
+                onSwipeRight={likeCurrent}
+                renderCard={m => <MovieCard movie={m} />}
+              />
+              {/* Kontrollpanel */}
+              <div
+                className='controls'
+                role='group'
+                aria-label='Kortkontroller'
               >
-                ℹ️
-              </button>{' '}
-              <HeartButton onClick={likeCurrent} data-cy="heart-btn" />
+                <XButton
+                  onClick={dismissCurrent}
+                  aria-label='Avvisa film'
+                  data-cy='x-btn'
+                />
+                <button
+                  onClick={() => openModal(current)}
+                  className='info-btn'
+                  aria-label='Mer info'
+                >
+                  ℹ️
+                </button>
+                <HeartButton
+                  onClick={likeCurrent}
+                  data-cy='heart-btn'
+                  aria-label={current ? `Gilla ${current.title}` : 'Gilla film'}
+                />
+              </div>
             </div>
-          </div>
 
-          {modalMovie && <MovieModal movie={modalMovie} onClose={closeModal} />}
-        </>
-      )}
-    </StateGate>
-  </div>
-); }
+            {modalMovie && (
+              <MovieModal movie={modalMovie} onClose={closeModal} />
+            )}
+          </>
+        )}
+      </StateGate>
+    </div>
+  );
+}

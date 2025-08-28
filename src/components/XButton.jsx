@@ -1,12 +1,19 @@
-export function XButton({ onClick }) {
+export function XButton({
+  onClick,
+  className = '',
+  'aria-label': ariaLabel = 'Avvisa film',
+  ...props
+}) {
   return (
     <button
-      className='x-button'
       type='button'
+      className={`x-button ${className}`}
       onClick={onClick}
-      aria-label='Dislike'
+      aria-label={ariaLabel}
+      title={ariaLabel}
+      {...props}
     >
-      X
+      ✕
     </button>
   );
 }

@@ -9,6 +9,7 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  font-size: 16px;
 }
 
 /* Media ska krympa in i containern */
