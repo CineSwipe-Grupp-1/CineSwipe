@@ -65,7 +65,7 @@ export function WatchlistPage() {
     <div className='watchlist-page'>
       {Head}
       <div className='watchlist-header'>
-        <h1>Min filmlista</h1>
+        <h1>Min Filmlista</h1>
         <div className='header-div'>
           <button className='remove-btn' onClick={() => handleClear()}>
             ❌ Rensa Filmer
