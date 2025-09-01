@@ -110,6 +110,7 @@
 
 /* Centrera sidinnehåll (loading/error/ready) */
 .page-center {
+  position: absolute;    /*Maricel .... This position can also be changed to FIXED, if necessary*/
   min-height: 100dvh;
   display: flex;
   align-items: center; /* vertikalt */
@@ -128,4 +129,10 @@
 }
 .error-card button {
   margin-top: 0.75rem;
+}
+
+@media (min-width: 769px) {
+  .page-center {
+    position: absolute;
+  }
 }

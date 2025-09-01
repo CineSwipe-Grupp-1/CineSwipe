@@ -5,7 +5,7 @@ import logo from '../assets/logo.png'; // adjust path if needed
 const Header = () => {
     return (
         <header>
-            <img src={logo} alt="CineSwipe Logo" />
+            <img className = "logo" src={logo} alt="CineSwipe Logo" />
         </header>
     );
 };
