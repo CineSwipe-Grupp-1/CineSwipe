@@ -54,7 +54,7 @@ export function WatchlistPage() {
         <h1>Min filmlista</h1>
         <p>Din lista är tom 👀</p>
         <p>
-          Gå till <a href='/'>Home</a> och lägg till filmer genom att swipa
+          Gå till <Link to='/'>Home</Link> och lägg till filmer genom att swipa
           höger eller trycka “Lägg till”.
         </p>
       </div>
