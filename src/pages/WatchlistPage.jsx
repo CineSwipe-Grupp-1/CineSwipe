@@ -32,7 +32,7 @@ export function WatchlistPage() {
   if (!movies || movies.length === 0) {
     return (
       <div className="watchlist-page" data-cy="watchlist-page">
-        <h2 data-cy="watchlist-title">Min Film Lista</h2>
+        <h2 className="watchlist-title" data-cy="watchlist-title">Min Film Lista</h2>
         <p>Din lista är tom 👀</p>
         <p>
           Gå till <Link to="/HomePage">Home</Link> och lägg till filmer genom
@@ -45,9 +45,9 @@ export function WatchlistPage() {
   return (
     <div className="watchlist-page">
       <div className="watchlist-header">
-        <h2>Min Film Lista</h2>
+        <h2 className="watchlist-title">Min Film Lista</h2>
         <div className="header-div">
-          <button className="remove-btn" onClick={() => handleClear()}>
+          <button className="remove-btn-1" onClick={() => handleClear()}>
             ❌ Rensa Filmer
           </button>
           <span className="watchlist-count">{movies.length} filmer</span>
@@ -85,7 +85,7 @@ export function WatchlistPage() {
 
               <div className="actions">
                 <button
-                  className="remove-btn"
+                  className="remove-btn-2"
                   onClick={() => handleRemove(movie.id)}
                   aria-label={`Ta bort ${movie.title} från watchlist`}
                 >
