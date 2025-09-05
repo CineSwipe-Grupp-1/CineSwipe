@@ -23,7 +23,7 @@ describe("HomePage", () => {
     cy.get("button[aria-label='Lägg till i watchlist']").click();
 
     cy.visit("/WatchlistPage");
-    cy.contains("My Watchlist").should("exist");
+    cy.contains("Min Filmlista").should("exist");
     cy.contains("Mock Movie 1").should("exist");
   });
 });

@@ -32,10 +32,10 @@ export function WatchlistPage() {
   if (!movies || movies.length === 0) {
     return (
       <div className="watchlist-page" data-cy="watchlist-page">
-        <h2 data-cy="watchlist-title">Min Film Lista</h2>
+        <h2 data-cy="watchlist-title">Min Filmlista</h2>
         <p>Din lista är tom 👀</p>
         <p>
-          Gå till <Link to="/HomePage">Home</Link> och lägg till filmer genom
+          Gå till <Link to="/HomePage">Start</Link> och lägg till filmer genom
           att swipa höger eller trycka “Lägg till”.
         </p>
       </div>

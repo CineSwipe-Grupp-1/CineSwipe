@@ -3,8 +3,6 @@ import "../styles/Modal.css";
 const MovieModal = ({ movie, onClose }) => {
   if (!movie) return null;
 
-  console.log(movie);
-
   return (
     <div className="movie-modal-overlay" onClick={onClose}>
       <div className="movie-modal-content" onClick={(e) => e.stopPropagation()}>

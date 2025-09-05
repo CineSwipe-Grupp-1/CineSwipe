@@ -25,7 +25,7 @@ CineSwipe är en mobil- och läsplatteanpassad webbapp byggd i React där använ
 
 ## Funktioner
 
-- **Upptäck**: Hämtar trendande filmer/serier (vecka) från TMDB.
+- **Upptäck**: Hämtar trendande filmer/serier från TMDB.
 - **Svepinteraktion**: Vänster = ignorera, höger = lägg till i watchlist.
 - **Watchlist**: Lokal lagring (LocalStorage). Se, ta bort, eller rensa listan.
 - **Detaljvy (Modal)**: Poster, beskrivning, betyg, år, releasedatum.
