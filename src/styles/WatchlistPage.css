@@ -2,10 +2,19 @@
 .watchlist-page {
   padding: 1.5rem 2rem;
   min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.watchlist-page h2 {
+/*.watchlist-page h2 {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1f2937;
+}*/
+
+/* Endast tom-läget ska centreras */
+.empty-title {
   text-align: center;
   margin-top: 5rem;
   margin-bottom: 1rem;
@@ -13,16 +22,20 @@
   color: #1f2937;
 }
 
-
+/* Headerns rubrik ska linjera med griden */
+.watchlist-header .watchlist-title {
+  text-align: left;
+  margin: 0;
+}
 
 /* Header with count */
-.watchlist-header  {
+.watchlist-header {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
- /* margin: 0 auto 1.5rem;*/
+  margin: 0 auto 1.5rem;
   padding: 0 1rem;
 }
 
@@ -35,7 +48,7 @@
 .watchlist-count {
   font-size: 1rem;
   margin-bottom: 1rem;
-  
+
   color: #6b7280;
   font-weight: 500;
 }
@@ -125,11 +138,10 @@
   .overview::after {
     display: none;
   }
-  
-  .watchlist-count{
-      margin-top: 5rem;
-    }
-  
+
+  .watchlist-count {
+    margin-top: 5rem;
+  }
 }
 
 /* Actions */
@@ -204,7 +216,7 @@
   .watchlist-container {
     grid-template-columns: 1fr;
   }
-  
+
   .movie-card-list {
     flex-direction: column;
     height: auto;
@@ -226,7 +238,7 @@
   }
 
   .overview::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -245,7 +257,6 @@
   .header-div {
     flex-direction: column;
     gap: 0.5rem;
-    
   }
 
   .remove-btn-1 {
@@ -289,11 +300,20 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
-    margin-left: 7rem;
+    margin-left: 0;
     gap: 0.5rem;
   }
-  
-  
-  
-  
+}
+
+/* Gör rubriken i headern vänsterställd och utan extra marginaler */
+.watchlist-header .watchlist-title {
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.watchlist-header,
+.watchlist-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 1rem; /* samma på båda */
 }

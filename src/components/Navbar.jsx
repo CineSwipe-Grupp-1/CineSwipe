@@ -1,15 +1,15 @@
-import { NavLink } from "react-router-dom";
-import "../styles/Navbar.css";
+import { NavLink } from 'react-router-dom';
+import '../styles/Navbar.css';
 
 export const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className='navbar'>
       <ul>
         <li>
           <NavLink
-            to="/HomePage"
+            to='/HomePage'
             className={({ isActive }) =>
-              isActive ? "nav-btn active" : "nav-btn"
+              isActive ? 'nav-btn active' : 'nav-btn'
             }
           >
             🏠 Start
@@ -17,12 +17,12 @@ export const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/WatchlistPage"
+            to='/WatchlistPage'
             className={({ isActive }) =>
-              isActive ? "nav-btn active" : "nav-btn"
+              isActive ? 'nav-btn active' : 'nav-btn'
             }
           >
-            ❤️ FilmLista
+            ❤️ Filmlista
           </NavLink>
         </li>
       </ul>
