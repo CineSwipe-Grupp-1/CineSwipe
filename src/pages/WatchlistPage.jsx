@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/WatchlistPage.css";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/WatchlistPage.css';
 import {
   clearWatchlist,
   getWatchlist,
   removeFromWatchlist,
-} from "../lib/storage";
-import MovieModal from "../components/MovieModal";
+} from '../lib/storage';
+import MovieModal from '../components/MovieModal';
 
 export function WatchlistPage() {
   const [movies, setMovies] = useState([]);
   const [modalMovie, setModalMovie] = useState(null);
 
-  const openModal = (movie) => setModalMovie(movie);
+  const openModal = movie => setModalMovie(movie);
   const closeModal = () => setModalMovie(null);
 
   useEffect(() => {
     setMovies(getWatchlist());
   }, []);
 
-  const handleRemove = (id) => {
+  const handleRemove = id => {
     removeFromWatchlist(id);
     setMovies(getWatchlist());
   };
@@ -31,11 +31,13 @@ export function WatchlistPage() {
 
   if (!movies || movies.length === 0) {
     return (
-      <div className="watchlist-page" data-cy="watchlist-page">
-        <h2 className="watchlist-title" data-cy="watchlist-title">Min Film Lista</h2>
+      <div className='watchlist-page' data-cy='watchlist-page'>
+        <h2 className='empty-title' data-cy='watchlist-title'>
+          Min Filmlista
+        </h2>
         <p>Din lista är tom 👀</p>
         <p>
-          Gå till <Link to="/HomePage">Home</Link> och lägg till filmer genom
+          Gå till <Link to='/HomePage'>Home</Link> och lägg till filmer genom
           att swipa höger eller trycka “Lägg till”.
         </p>
       </div>
@@ -43,49 +45,49 @@ export function WatchlistPage() {
   }
 
   return (
-    <div className="watchlist-page">
-      <div className="watchlist-header">
-        <h2 className="watchlist-title">Min Film Lista</h2>
-        <div className="header-div">
-          <button className="remove-btn-1" onClick={() => handleClear()}>
+    <div className='watchlist-page'>
+      <div className='watchlist-header'>
+        <h2 className='watchlist-title'>Min Filmlista</h2>
+        <div className='header-div'>
+          <button className='remove-btn-1' onClick={() => handleClear()}>
             ❌ Rensa Filmer
           </button>
-          <span className="watchlist-count">{movies.length} filmer</span>
+          <span className='watchlist-count'>{movies.length} filmer</span>
         </div>
       </div>
 
-      <div className="watchlist-container">
-        {movies.map((movie) => (
-          <div key={movie.id} className="movie-card-list">
+      <div className='watchlist-container'>
+        {movies.map(movie => (
+          <div key={movie.id} className='movie-card-list'>
             {movie.posterUrl ? (
               <img
                 src={movie.posterUrl}
                 alt={movie.title}
-                className="movie-poster"
-                loading="lazy"
+                className='movie-poster'
+                loading='lazy'
               />
             ) : (
-              <div className="movie-poster placeholder">Ingen bild</div>
+              <div className='movie-poster placeholder'>Ingen bild</div>
             )}
 
-            <div className="movie-info">
-              <h3 className="movie-title">
-                {movie.title} {movie.year ? `(${movie.year})` : ""}
+            <div className='movie-info'>
+              <h3 className='movie-title'>
+                {movie.title} {movie.year ? `(${movie.year})` : ''}
               </h3>
 
               {movie.releaseDate && (
-                <p className="release-date">Släppt: {movie.releaseDate}</p>
+                <p className='release-date'>Släppt: {movie.releaseDate}</p>
               )}
 
-              {movie.overview && <p className="overview">{movie.overview}</p>}
+              {movie.overview && <p className='overview'>{movie.overview}</p>}
 
-              {typeof movie.rating === "number" && (
-                <p className="rating">⭐ {movie.rating}</p>
+              {typeof movie.rating === 'number' && (
+                <p className='rating'>⭐ {movie.rating}</p>
               )}
 
-              <div className="actions">
+              <div className='actions'>
                 <button
-                  className="remove-btn-2"
+                  className='remove-btn-2'
                   onClick={() => handleRemove(movie.id)}
                   aria-label={`Ta bort ${movie.title} från watchlist`}
                 >
@@ -93,8 +95,8 @@ export function WatchlistPage() {
                 </button>
                 <button
                   onClick={() => openModal(movie)}
-                  className="info-btn"
-                  aria-label="Mer info"
+                  className='info-btn'
+                  aria-label='Mer info'
                 >
                   ℹ️
                 </button>
